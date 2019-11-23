@@ -4,6 +4,7 @@ import Button from "./Button";
 import OperatorButton from "./OperatorButton";
 import { doMath } from './algorithms';
 import { handleDecimal } from './handleDecimal';
+import { setNegative } from './setNegative';
 
 export default class Board extends Component{
     constructor(props){
@@ -22,7 +23,8 @@ export default class Board extends Component{
         this.handleRestart = this.handleRestart.bind(this);
         this.handleEquals = this.handleEquals.bind(this);
         this.handleDot = this.handleDot.bind(this);
-        this.handleChangeInput = this.handleChangeInput.bind(this);
+        this.handleNegative = this.handleNegative.bind(this);
+        
     }
    
     
@@ -88,10 +90,14 @@ export default class Board extends Component{
     }
    
     }
+    handleNegative(){
+        let newNum = setNegative(this.state.display);
+        this.setState({
+            display: newNum
+        })
+    }
 
-    handleChangeInput(){
-        
-    };
+
 
     render(){    
         return(
@@ -104,10 +110,11 @@ export default class Board extends Component{
                  className = "calculatorScreen"
                  /> 
             <div className = "Board-main">
-                <OperatorButton addOperator = {this.handleOperator} value = "+"/>
+                <OperatorButton addOperator = {this.handleOperator} value = "+"/>  
                 <OperatorButton addOperator = {this.handleOperator}  value = "-"/>
                 <OperatorButton addOperator = {this.handleOperator} value = "x"/>
                 <OperatorButton addOperator = {this.handleOperator} value = "÷"/> 
+                <button onClick = {this.handleNegative} className = "negative-btn">+/-</button>
                 <Button addValue = {this.handleClick} value = "1"/>
                 <Button addValue = {this.handleClick} value = "2"/>
                 <Button addValue = {this.handleClick} value = "3"/>
@@ -119,6 +126,7 @@ export default class Board extends Component{
                 <Button addValue = {this.handleClick} value = "9"/>
                 <Button addValue = {this.handleClick} value = "0"/>
                 <button className = "restart-btn" onClick = {this.handleDot}>.</button>
+                
                 <button onClick = {this.handleRestart} className = "restart-btn">AC</button>
                 <button onClick = {this.handleEquals}  className = "equals-btn">=</button>     
                                
