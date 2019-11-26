@@ -60,3 +60,10 @@ html{
     color: white;
     font-size: 2rem;
 } 
+.negative-btn{
+    height: 60px;
+    border:none;
+    background: #0C194D;
+    color: white;
+    font-size: 2rem;
+}
