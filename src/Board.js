@@ -17,8 +17,7 @@ export default class Board extends Component{
            numberClicked: false,
            operClicked: false,
            maxLength: false
-           }
-        
+           }  
         this.handleClick = this.handleClick.bind(this);
         this.handleOperator = this.handleOperator.bind(this);
         this.handleRestart = this.handleRestart.bind(this);
@@ -27,7 +26,7 @@ export default class Board extends Component{
         this.handleNegative = this.handleNegative.bind(this);
         
     }
-   
+
     
     handleRestart(){
         this.setState({
@@ -40,28 +39,25 @@ export default class Board extends Component{
 
     }
     
-    //updates the display
+    /*
+    updates the display and inptuts state. Handles if opertor is clicked 
+    Passed maxNum function to handle userInput 
+
+    */
     handleClick(number){
-        
-        
-        if(this.state.operClicked){
+        if(this.state.operClicked){//assuming a user has clicked a sequence of numbers or just by default wants zero
             this.setState({
                 inputs: this.state.display,
                 display: '',
                 
-            })
-            
+            })   
         }
-        
-        
+        // if the if case is not caught just handle updating 
         this.setState( state => ({
             display: maxNum(state.display += number),
             numberClicked: true,
             operClicked: false
-        }))
-    
-        
-       
+        }))       
     }
     //updates the input and display and operator state
     handleOperator(operator){
@@ -84,7 +80,6 @@ export default class Board extends Component{
             operator: ''
         })
     }
-
     handleDot(){
         // add 0 to decimal if there's no . to the left of it
         if(handleDecimal(this.state.display) === false){
@@ -95,8 +90,7 @@ export default class Board extends Component{
         this.setState({
             display: this.state.display
         })
-    }
-   
+        }
     }
     handleNegative(){
         let newNum = setNegative(this.state.display);
@@ -104,9 +98,6 @@ export default class Board extends Component{
             display: newNum
         })
     }
-
-
-
     render(){    
         return(
             <div className = "Board">
