@@ -6,6 +6,7 @@ import { doMath } from './algorithms';
 import { handleDecimal } from './handleDecimal';
 import { setNegative } from './setNegative';
 
+
 export default class Board extends Component{
     constructor(props){
         super(props);
@@ -41,19 +42,28 @@ export default class Board extends Component{
     
     //updates the display
     handleClick(number){
+        let { display } = this.state;
+        
         if(this.state.operClicked){
             this.setState({
                 inputs: this.state.display,
-                display: '',        
+                display: '',
+                operClicked: false,
+                
+                
             })
+            
         }
-        
+        else if(!this.state.operClicked){
+        display += number
         this.setState( state => ({
-            display: state.display += number, 
+            display: display.slice(0,5),
             numberClicked: true,
             operClicked: false
         }))
-    
+    }
+        
+       
     }
     //updates the input and display and operator state
     handleOperator(operator){
