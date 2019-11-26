@@ -5,7 +5,7 @@ import OperatorButton from "./OperatorButton";
 import { doMath } from './algorithms';
 import { handleDecimal } from './handleDecimal';
 import { setNegative } from './setNegative';
-
+import { maxNum } from './maxNum';
 
 export default class Board extends Component{
     constructor(props){
@@ -42,26 +42,24 @@ export default class Board extends Component{
     
     //updates the display
     handleClick(number){
-        let { display } = this.state;
+        
         
         if(this.state.operClicked){
             this.setState({
                 inputs: this.state.display,
                 display: '',
-                operClicked: false,
-                
                 
             })
             
         }
-        else if(!this.state.operClicked){
-        display += number
+        
+        
         this.setState( state => ({
-            display: display.slice(0,5),
+            display: maxNum(state.display += number),
             numberClicked: true,
             operClicked: false
         }))
-    }
+    
         
        
     }
