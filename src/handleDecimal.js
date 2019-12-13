@@ -1,3 +1,4 @@
 export const handleDecimal = (str) => {
-    return str.indexOf('.') !== -1 ? true: false 
+    let toString = str.toString();
+    return toString.indexOf('.') !== -1
   }

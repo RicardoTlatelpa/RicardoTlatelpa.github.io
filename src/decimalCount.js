@@ -5,7 +5,8 @@ export const decimalCount = (number) =>{
    } 
   let decimalCount = test.split('.').pop().length;
    if(decimalCount > 3){
-      return number.toFixed(3)
+     let num = number.toFixed(3);
+      return num.toString();
     }
    return number; 
     
